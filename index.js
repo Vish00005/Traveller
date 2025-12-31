@@ -98,7 +98,7 @@ app.listen(port, (req, res) => {
 
 //----------------------------------Root route----------------------------------
 app.get("/", (req, res) => {
-  res.send("ROOT Directory");
+  res.redirect('/listings');
 });
 
 app.get("/sample", (req, res) => {
