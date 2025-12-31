@@ -37,23 +37,27 @@ app.use(methodOverride("_method"));
 
 
 
-const dbUrl = process.env.ATLAS_DB_URL;
+
+const dbUrl = process.env.MONGO_URL;
+
+if (!dbUrl) {
+  throw new Error("Database URL is not defined");
+}
 
 const sessionOptions = {
-  store : MongoStore.create({
-    mongoUrl : dbUrl,
-    crypto:{
-      secret : process.env.SESSION_SECRET,
+  store: MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+      secret: process.env.SESSION_SECRET,
     },
     touchAfter: 24 * 60 * 60,
   }),
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
-  cookie:{
-    httpOnly:true,
-    expires: Date.now() + 1000*60*60*24*3,
-    maxAge: 1000*60*60*24*3
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 3,
   }
 };
 app.use(session(sessionOptions));
