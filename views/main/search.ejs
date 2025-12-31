@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/search.css" />
+    <link rel="stylesheet" href="/footer.css">
+    <title>Search</title>
+</head>
+<body>
+    <%- include("../includes/nav.ejs") %>
+    <section id="search-view">
+        <h1 id="search-main-title">List for "<%= Search %>"</h1>
+    <div id="search-cards">
+        <% for( let i of data) {%>
+            <div class="search-card">
+                <a href="/listings/<%= i._id %>"><img src="<%= i.image.url %>" width="100px" height="100px"></a>
+               <p class="search-card-title"> <a href="http://localhost:3001/listings/<%= i._id %>"><%= i.title %></a></p>
+                <p class="search-card-price">₹ <%= i.price.toLocaleString("en-IN") %></p>
+                <hr>
+            </div>
+            <% } %>    
+    </div>
+    </section>
+
+    <%- include("../includes/footer.ejs") %>
+</body>
+</html>

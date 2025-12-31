@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:content-box !important;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#login{
+    font-family: 'Times New Roman', Times, serif !important;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: auto;
+    background-color: rgb(255, 238, 223);
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    padding: 50px 10px;
+}
+.login-box > h1{
+    font-size: 60px;
+    text-align: center;
+}
+#login-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.login-row{
+    width: 80%;
+    margin-bottom: 10px;
+}
+.login-row > label{
+    font-size: 22px;
+}
+.login-row > input,#login-pwd{
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}
+.login-pwd{
+    width: 100%;
+    /* margin-left: -10px; */
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* justify-content: space-evenly; */
+}
+.login-pwd>i{
+    font-size: 23px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#login-pwd{
+    width:90%
+}
+.login-row > input:focus{
+    background-color: transparent;
+}
+#login-submit{
+    align-self: center;
+    justify-self:center;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 20px;
+    padding: 5px 0
+}
+#login-submit:hover{
+    background-color: transparent;
+    color: blue;
+}
+#login-row-btn{
+    width: max-content;
+}
+#register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#register>p{
+    font-size: 18px;
+    margin: 0;
+    margin-top: 10px;
+}
+#register>a{
+    font-size: 17px;
+}
+@media screen and (max-width: 767px) {
+    .login-box{
+        width: 80%;
+        height: auto;
+        background-color: rgb(255, 238, 223);
+        border-radius: 20px;
+        box-shadow: 0 0 10px black;
+        padding: 30px 10px;
+    }
+    .login-box > h1{
+        font-size: 55px;
+        text-align: center;
+    }
+    #login{
+        font-family: 'Times New Roman', Times, serif !important;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #login-form{
+        height: 70%;
+    }
+}
+@media screen and (max-height: 767px){
+    #login{
+
+        height: auto;
+     
+    }
+}

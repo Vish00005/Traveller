@@ -1,0 +1,21 @@
+#error{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+#error > h1{
+    margin: 0;
+    font-size: 5vw;
+    opacity: 0.6;
+}
+@media screen and (max-width: 1200px)
+{
+    #error > h1{
+        margin: 0;
+        font-size: 7vw;
+        opacity: 0.6;
+    }
+}

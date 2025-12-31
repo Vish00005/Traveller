@@ -1,0 +1,149 @@
+<nav>
+  <div id="nav">
+    <div class="nav-ham" onclick="navham()">
+      <hr />
+      <hr />
+      <hr />
+    </div>
+    <div id="logo">
+      <a href="/listings">Traveller</a>
+    </div>
+    <div id="nav-elements">
+      <div id="links">
+        <p onclick="navham()" id="close-btn">&Cross;</p>
+        <a href="/listings#home" class="nav-link">Home</a>
+        <a id="cat-hov" onclick="navcatham()" class="nav-link">Categories</a>
+        <div class="cat-box">
+          <p onclick="navcatham()" id="cat-close-btn">&Cross;</p>
+          <a class="cat-link" href=""><i class="fa-solid fa-fire"></i>Trending</a>
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-mountain"></i> Mountains
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-city"></i> Cities
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-tree"></i> Forests
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-umbrella-beach"></i> Beaches
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-snowflake"></i> Snow
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-campground"></i> Camping
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-water"></i> Lakes
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-landmark"></i> Heritage
+          </a>
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-utensils"></i>Cuisine
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-music"></i> Festivals
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-person-hiking"></i> Adventure
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-spa"></i> Wellness
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-camera-retro"></i> Photography
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-ship"></i> Cruises
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-shop"></i> Shopping
+          </a>
+          
+          <a class="cat-link" href="">
+            <i class="fa-solid fa-people-group"></i> Family Trips
+          </a>
+        </div>
+  
+        <a href="#footer" class="nav-link">About us</a>
+      </div>
+  
+  
+    <div id="right-nav">
+      <a href="/listings/create" class="nav-link" id="create-nav-link">Become Host</a>
+      <div id="searchbar" onmouseleave="srcheffect()">
+        <form
+          action="/listings/search"
+          method="get"
+          id="srch-frm"
+        >
+          <input
+            name="Search"
+            type="text"
+            id="srch"
+            placeholder="Search Here"
+            autocomplete="off"
+          />
+          <button type="submit" id="srch-btn"  onmouseenter="srcheffect()" ><img src="/search-2907.png" alt="" ></button>
+        </form>
+      </div>
+    </div>
+  </div>
+    <div id="user-icon">
+      <% if(curruser) {%>
+      <a href="/logout">
+        <img
+          src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+          alt=""
+          srcset=""
+        />
+      </a>
+      <% } else{ %>
+      <a href="/login" id="login-btn">Login</a>
+      <% } %>
+    </div>
+  </div>
+</nav>
+<script>
+  let ctbx = document.querySelector(".cat-box");
+  function navcatham() {
+    if (ctbx.style.display === "flex") {
+      ctbx.style.display = "none";
+    } else {
+      ctbx.style.display = "flex";
+    }
+  }
+  function navham() {
+    let nav = document.querySelector("#nav-elements");
+    if (nav.style.display === "flex") {
+      nav.style.display = "none";
+    } else {
+      nav.style.display = "flex";
+    }
+  }
+
+  function srcheffect(){
+    let btn = document.querySelector("#srch-btn");
+    let txt =  document.querySelector("#srch")
+    if (txt.style.display !== "block") {
+      txt.style.display = "block";
+    } else{
+      txt.style.display = "none";
+    }
+  }
+</script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/edit.css" />
+    <link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/footer.css" />
+
+    <title>Edit</title>
+  </head>
+  <body>
+    <%- include("../includes/nav.ejs") %>
+
+    <section id="form">
+      <form
+        action="/listings/<%= data._id %>?_method=PUT"
+        method="post"
+        id="edit-form"
+        enctype="multipart/form-data"
+      >
+        <fieldset>
+          <!-- <legend>Details</legend> -->
+          <h1 id="edit-h1">Edit Post</h1>
+
+          <div class="form-row">
+          <label for="title" class="edit-label">Title:</label><br />
+          <input
+            type="text"
+            name="listing[title]"
+            id="title"
+            value="<%= data.title %>"
+            class="edit-input"
+          /></div>
+
+          <div class="form-row">
+          <label for="description" class="edit-label">Description</label><br />
+          <textarea name="listing[description]" id="description"><%= data.description %></textarea>
+</div>
+
+<div class="form-row">
+          <label for="image" class="edit-label">New Image:</label><br />
+          <input
+            type="file"
+            name="listing[image]"
+            id="image"
+            class="edit-input"
+          />
+          </div>
+
+            <div class="form-row">
+            <div class="row1">
+              <label for="price" class="edit-label">Price:</label><br />
+              <input
+                type="number"
+                name="listing[price]"
+                id="price"
+                value="<%= data.price %>"
+                class="edit-input"
+              />
+            </div>
+            <div class="row2">
+              <label for="location" class="edit-label">Location:</label><br />
+              <input
+                type="text"
+                name="listing[location]"
+                id="location"
+                value="<%= data.location %>"
+                class="edit-input"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="form-row">
+          <label for="country" class="edit-label">Country:</label><br />
+          <input
+            type="text"
+            name="listing[country]"
+            id="country"
+            value="<%= data.country %>"
+            class="edit-input"
+          />
+          </div>
+          <button type="submit" class="edit-button">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <%- include("../includes/footer.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    /><link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/signup.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>SignUp | Traveller</title>
+</head>
+<body>
+    <%- include("../includes/nav.ejs")  %>
+
+    <section id="signup">
+        <div class="signup-box">
+            <h1>Signup</h1>
+            <form action="/signup" method="post" id="signup-form">
+                <div class="signup-row">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="signupdata[username]" class="form-control" required />
+                </div>
+                <div class="signup-row">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="signupdata[email]" class="form-control" required />
+                </div>
+                <div class="signup-row">
+                    <label for="password">Password:</label>
+                    <div class="signup-pwd">
+                        <input type="password" id="signup-pwd" name="signupdata[password]" class="form-control" required/>
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                </div>
+                <!-- <div class="signup-row">
+                    <label for="username">Date of Birth:</label>
+                    <input type="date" id="dob" name="signupdata[dob]" class="form-control" required />
+                </div> -->
+                <div class="signup-row-btn">
+                    <button type="submit" id="signup-submit">Submit</button>    
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <%- include("../includes/footer.ejs")  %>
+    <% if (success.length) { %>
+        <script>
+          alert("<%= success %>");
+        </script>
+      <% }  else if (error.length){ %>
+        <script>
+          alert("<%= error %>");
+        </script>
+      <% } %>
+    <script>
+        let eye = document.querySelector(".signup-pwd i");
+        let pwd = document.querySelector("#signup-pwd");
+        eye.addEventListener("click", function(){
+            if(pwd.type == "password"){
+            pwd.type = "text";
+            eye.className = "fa-regular fa-eye-slash";
+        }else if(pwd.type == "text"){
+            pwd.type = "password";
+            eye.className = "fa-regular fa-eye"
+        }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/create.css" />
+    <link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>New Post</title>
+  </head>
+  <body>
+    <%- include("../includes/nav.ejs") %>
+
+    <section id="form">
+
+      <form action="/listings" method="post" id="create-form" novalidate class="needs-validation" enctype="multipart/form-data">
+      <h1 id="create-h1">New Post</h1>
+      <fieldset>
+
+        <div class="form-row">
+          <label for="title" class="create-label">Title:</label><br />
+        <input
+          type="text"
+          name="listing[title]"
+          id="title"
+          class="create-input"
+          required
+        />
+        <div class="invalid-feedback">
+          Doesn't Looks good!
+        </div>
+      </div>
+
+
+        <div class="form-row">
+        <label class="create-label" for="description">Description:</label><br />
+        <textarea name="listing[description]" id="description" class="" required></textarea>
+        <div class="invalid-feedback">
+          Doesn't Looks good!
+        </div>
+        </div>
+
+        
+   
+        <div class="form-row">
+        <label class="create-label" for="image">Uplaod Image:</label><br />
+        <input
+          class="create-input "
+          type="file"
+          name="listing[image]"
+          id="image"
+          required
+        />
+        </div>
+
+
+        <div class="form-row">
+          <div class="row1">
+            <label class="create-label" for="price">Price:</label><br />
+            <input
+              class="create-input"
+              
+              name="listing[price]"
+              id="price"
+              required
+            />
+            <div class="invalid-feedback">
+              Doesn't Looks good!
+            </div>
+            </div>
+
+          <div class="row2">
+            <label class="create-label" for="location">Location:</label><br />
+            <input
+              class="create-input "
+              type="text"
+              name="listing[location]"
+              id="location"
+              required
+            />
+            <div class="invalid-feedback">
+              Doesn't Looks good!
+            </div>
+            
+
+
+          </div>
+        </div>
+        <div class="form-row">
+        <label class="create-label" for="country">Country:</label><br />
+        <input
+          class="create-input "
+          type="text"
+          name="listing[country]"
+          id="country"
+          required
+        />
+        <div class="invalid-feedback">
+          Doesn't Looks good!
+        </div>
+       </div>
+
+
+
+
+        <button type="submit" class="create-button">Submit</button>
+      </fieldset>
+    </form>
+    </section>
+
+    <%- include("../includes/footer.ejs") %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/validate-boot.js"></script>
+  </body>
+</html>

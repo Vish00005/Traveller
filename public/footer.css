@@ -1,0 +1,190 @@
+footer{
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: peachpuff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-family: 'Times New Roman', Times, serif !important;
+}
+footer hr{
+    width: 100%;
+    border: 1px solid rgb(255, 179, 104);
+}
+#foot-text{
+    display: flex;
+    flex-wrap: wrap;
+}
+#foot-content{
+    width: 50%;
+    /* border-right: 2px solid rgb(255, 179, 104); */
+    margin-right: 10px;
+}
+#foot-content h1{
+    margin: 0;
+    font-weight: bold !important;
+    font-size: 55px;
+    /* margin: 5px 0; */
+    color: rgb(255, 44, 44);
+    font-family: "Fredericka the Great", serif;
+}
+#foot-content h2{
+    font-size: 30px;
+    margin: 10px 0;
+}
+#foot-content p{
+    font-size: 23px;
+    color: rgb(180, 127, 74);
+}
+#foot-pop {
+    width: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border-right: 2px solid rgb(255, 179, 104); */
+    margin-right: 10px;
+}
+
+#foot-pop h2 {
+    width: 100%;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 32px; /* Match the font size */
+}
+#foot-pop1,#foot-pop2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#foot-pop1 a,#foot-pop2 a{
+    text-decoration: none;
+    color: rgb(180, 127, 74);
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: 200ms;
+}
+#foot-pop1 a:hover,#foot-pop2 a:hover{
+    text-decoration: underline;
+}
+#foot-serv{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border-right: 2px solid rgb(255, 179, 104); */
+    /* margin-right: 10px; */
+}
+#foot-serv h2{
+    width: 100%;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 32px;
+}
+#foot-serv1,#foot-serv2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#foot-serv1 a,#foot-serv2 a{
+    text-decoration: none;
+    color: rgb(180, 127, 74);
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: 200ms;
+}
+#foot-serv1 a:hover,#foot-serv2 a:hover{
+    text-decoration: underline;
+}
+#foot-customer{
+    display: flex;
+}
+#foot-contact{
+    width: 50%; 
+}
+#foot-contact h2{
+    font-size: 30px;
+}
+#foot-contact p{
+    margin: 5px 0;
+    margin-left: 8px;
+    font-size: 23px;
+    color: rgb(180, 127, 74);
+}
+#foot-quick{
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#foot-quick h2{
+    width: 100%;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 32px;
+}
+#foot-quick1{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+#foot-quick1 a{
+    text-decoration: none;
+    color: rgb(180, 127, 74);
+    font-size: 20px;
+    margin-bottom: 5px;
+    transition: 200ms;
+}
+#foot-quick1 a:hover{
+    text-decoration: underline;
+}
+#foot-cr{
+    text-align: center;
+    font-size: 18px;
+}
+@media screen and (max-width: 767px) {
+    footer{
+        padding: 10px;
+    }
+    #foot-pop{
+        width: 100%;
+    }
+    #foot-content{
+        width: 90%;
+
+    }
+    #foot-serv{
+        width: 100%;
+    }
+    #foot-content > h1{
+        font-size: 10vw;
+    }
+    #foot-contact{
+        width: 100%;
+    }
+    #foot-quick{
+        width: 100%;
+    }
+    #foot-customer{
+        flex-wrap: wrap;
+    }
+    #foot-content > h2,#foot-quick > h2,#foot-pop > h2,#foot-serv > h2,#foot-contact >h2{
+        font-size: 6vw;
+        width: 100%;;
+    }
+    #foot-content > p,#foot-quick1 > a,#foot-pop1 > a,#foot-serv1 > a,#foot-contact > p{
+        font-size: 4vw;
+    }
+    #foot-serv1 > a{
+        width: 60%;
+    }
+    #foot-cr{
+        font-size: 4vw;
+    }
+}

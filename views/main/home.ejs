@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/nav.css" />
+    <link rel="stylesheet" href="/home.css" />
+    <link rel="stylesheet" href="/footer.css" />
+    <title>Traveller</title>
+  </head>
+  <body>
+    <%- include('../includes/nav.ejs') %>
+    <section id="title">
+      <video autoplay muted loop playsinline id="bg-video">
+        <source src="/bg-home.mp4" type="video/mp4" />
+      </video>
+    
+      <div id="title-card">
+        <div id="title-cnt">Traveller</div>
+        <hr id="title-hr" />
+      </div>
+    </section>
+    <section id="home">
+      <h1>Home</h1>
+      <div class="home-cards">
+        <% for(let list of data) {%>
+        <div class="home-card">
+          <a href="/listings/<%= list._id %>">
+            <img src="<%= list.image.url %>" alt="" height="100px" width="100px"
+          /></a>
+          <p class="card-title">
+            <a href="/listings/<%= list._id %>"
+              ><%= list.title %></a
+            >
+          </p>
+          <p class="card-price">
+            ₹ <%= list.price.toLocaleString("en-IN") %> /night
+          </p>
+        </div>
+        <% } %>
+      </div>
+    </section>
+    <%- include("../includes/footer.ejs") %>
+    <% if (success.length) { %>
+      <script>
+        alert("<%= success %>");
+      </script>
+    <% }  else if (error.length){ %>
+      <script>
+        alert("<%= error %>");
+      </script>
+    <% } %>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/TextPlugin.min.js"></script>
+
+    <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/EasePack.min.js"></script>
+    <script src="/gsapani.js"></script>
+  </body>
+</html>

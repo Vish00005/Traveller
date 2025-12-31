@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+#signup{
+    font-family: 'Times New Roman', Times, serif !important;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-box{
+    width: 40%;
+    height: auto;
+    background-color: rgb(255, 238, 223);
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    padding: 50px 10px;
+}
+.signup-box > h1{
+    font-size: 60px;
+    text-align: center;
+}
+#signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.signup-row{
+    width: 80%;
+    margin-bottom: 10px;
+}
+.signup-row > label{
+    font-size: 22px;
+}
+.signup-row > input,#signup-pwd{
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}
+.signup-pwd{
+    width: 100%;
+    /* margin-left: -10px; */
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* justify-content: space-evenly; */
+}
+.signup-pwd>i{
+    font-size: 23px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#signup-pwd{
+    width:90%
+}
+.signup-row > input:focus{
+    background-color: transparent;
+}
+#signup-submit{
+    align-self: center;
+    justify-self:center;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 20px;
+    padding: 5px 0
+}
+#signup-submit:hover{
+    background-color: transparent;
+    color: blue;
+}
+#signup-row-btn{
+    width: max-content;
+}
+@media screen and (max-width: 767px) {
+    .signup-box{
+        width: 80%;
+        height: auto;
+        background-color: rgb(255, 238, 223);
+        border-radius: 20px;
+        box-shadow: 0 0 10px black;
+        padding: 30px 10px;
+    }
+    .signup-box > h1{
+        font-size: 55px;
+        text-align: center;
+    }
+    #signup{
+        font-family: 'Times New Roman', Times, serif !important;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #signup-form{
+        height: 70%;
+    }
+}
+@media screen and (max-height: 767px){
+    #signup{
+
+        height: auto;
+     
+    }
+}
