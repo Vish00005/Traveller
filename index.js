@@ -38,6 +38,7 @@ app.use(methodOverride("_method"));
 
 const dbUrl = process.env.MONGO_URL;
 
+
 if (!dbUrl) {
   throw new Error("Database URL is not defined");
 }
