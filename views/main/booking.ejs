@@ -45,18 +45,27 @@
     <%- include('../includes/nav.ejs') %>
     <section id="book">
       <form
-        method="post hello five workout hello"
+        method="post"
         id="create-form"
         novalidate
-        enctype="multipart/form-data"
-        action="/listings"
+        action="/booking"
       >
         <h1 id="create-h1">Booking Details</h1>
         <fieldset>
           <div class="form-row">
             <label for="destinations" class="create-label">
-              <span>Destinations</span> : <%= data[0].title %></label
-            >
+              <span>Destinations</span> :  </label>
+              <br />
+              <input
+              type="text"
+              name="destination"
+              id="title"
+              class="create-input"
+              value="<%= data[0].title %>"
+              required
+              readonly
+            />
+              
           </div>
           <div class="form-row">
             <label for="price" class="create-label">
@@ -88,7 +97,7 @@
                 id="firstRangeInput"
                 placeholder="Start date"
                 class="date-input"
-                name="date-from"
+                name="datefrom"
               />
               <div class="invalid-feedback">Doesn't Looks good!</div>
 
@@ -100,7 +109,7 @@
                 id="secondRangeInput"
                 placeholder="End date"
                 class="date-input"
-                name="date-to"
+                name="dateto"
               />
               <div class="invalid-feedback">Doesn't Looks good!</div>
             </div>
@@ -147,26 +156,44 @@
           <div class="form-row">
             <div class="row1">
               <label class="create-label" for="total-days">Total Days:</label>
-              <p  class="totals" ><span id="total-days">--</span> days</p>
+              <p  class="totals" >
+                <input 
+                id="total-days"
+               readonly
+                type="text"
+                name="totaldays"
+                class="create-input"
+                required>
+              </input>
+              </p>
               <div class="invalid-feedback">Doesn't Looks good!</div>
             </div>
 
             <div class="row2">
               <label class="create-label" for="total-price">Total Price:</label
               >
-              <p  class="totals"><span id="total-price">--</span>₹</p>
+              <p  class="totals">
+                <input 
+                id="total-price"
+                type="text"
+                class="create-input"
+                name="totalprice"
+                readonly
+                required>
+              </input>
+            </p>
               <div class="invalid-feedback">Doesn't Looks good!</div>
             </div>
           </div>
           <div class="form-row">
             <label class="create-label" for="email-cnfrm"
-              >Email Confirmation :</label
+              >Email Confirmation(Ticket Purpose) :</label
             ><br />
             <input
               class="create-input"
               type="text"
               id="country"
-              name="email-cnfrm"
+              name="email"
               required
             />
             <div class="invalid-feedback">Doesn't Looks good!</div>
@@ -191,6 +218,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
     
     <script>
+      
         flatpickr("#firstRangeInput", {
           plugins: [new rangePlugin({ input: "#secondRangeInput" })],
           minDate: "today",
@@ -204,9 +232,10 @@
             const diffTime = end - start;
             const totalDays = diffTime / (1000 * 60 * 60 * 24) + 1; // inclusive
 
-            document.getElementById("total-days").innerText = totalDays;
+            document.getElementById("total-days").value = totalDays+" days";
             let totalPrice = document.getElementById("price").innerText * totalDays;
-            document.getElementById("total-price").innerText = totalPrice;
+            document.getElementById("total-price").value = totalPrice+"₹";
+            console.log(document.getElementById("total-price"))
             
           }
         }

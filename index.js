@@ -15,8 +15,18 @@ const User = require("./model/user.js");
 const listingroutes = require("./routes/listingroutes.js");
 const reviewroutes = require("./routes/reviewroutes.js");
 const userroutes = require("./routes/userroutes.js");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
 
-
+// ================= EMAIL CONFIG =================
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASS
+  }
+});
+app.use(cors());
 
 //----------------------------------EJS view engine----------------------------------
 app.set("views");
@@ -120,6 +130,58 @@ app.use("/listings", listingroutes);
 
 //----------------------------------Review routes----------------------------------
 app.use("/listings/:id/reviews", reviewroutes);
+
+app.post("/booking",async (req, res) => {
+  try {
+    const { destination,name, email, datefrom, dateto, adult,children,senior,totaldays,totalprice } = req.body;
+
+    if (!destination || !name || !email || !datefrom || !dateto || !children || !adult || !senior  || !totaldays || !totalprice) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const bookingId = "TRV" + Math.floor(100000 + Math.random() * 900000);
+
+    const htmlTemplate = `
+      <div style="font-family: Arial, sans-serif;">
+        <h2 style="color: green;">Booking Confirmed ✅</h2>
+
+        <p>Hello <b>${name}</b>,</p>
+        <p>Your travel booking has been successfully confirmed.</p>
+
+        <table border="1" cellpadding="10" cellspacing="0">
+          <tr><td><b>Booking ID</b></td><td>${bookingId}</td></tr>
+          <tr><td><b>Name</b></td><td>${name}</td></tr>
+          <tr><td><b>Destination</b></td><td>${destination}</td></tr>
+          <tr><td><b>From</b></td><td>${datefrom}</td></tr>
+          <tr><td><b>To</b></td><td>${dateto}</td></tr>
+          <tr><td><b>Adults</b></td><td>${adult}</td></tr>
+          <tr><td><b>Childrens</b></td><td>${children}</td></tr>
+          <tr><td><b>Seniors</b></td><td>${senior}</td></tr>
+          <tr><td><b>Total Days</b></td><td>${totaldays}</td></tr>
+          <tr><td><b>Amount Paid</b></td><td>${totalprice}</td></tr>
+        </table>
+
+        <p style="margin-top:15px;">Have a safe and happy journey! ✈️</p>
+        <p>Customer Support: +91-9999999999</p>
+      </div>
+    `;
+
+    await transporter.sendMail({
+      from: `"Travel Booking" <YOUR_EMAIL@gmail.com>`,
+      to: email,
+      subject: "Your Travel Booking Confirmation",
+      html: htmlTemplate
+    });
+
+    res.redirect("/listings")
+
+  } 
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Email sending failed" });
+  }
+}
+)
 
 //----------------------------------User routes----------------------------------
 app.use("/", userroutes);
