@@ -15,18 +15,29 @@ const User = require("./model/user.js");
 const listingroutes = require("./routes/listingroutes.js");
 const reviewroutes = require("./routes/reviewroutes.js");
 const userroutes = require("./routes/userroutes.js");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 const cors = require("cors");
+// const SibApiV3Sdk = require("sib-api-v3-sdk");
+const sgMail = require("@sendgrid/mail");
+
+
+sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 // ================= EMAIL CONFIG =================
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASS
-  }
-});
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: process.env.EMAIL,
+//     pass: process.env.PASS
+//   }
+// });
 app.use(cors());
+
+// const client = SibApiV3Sdk.ApiClient.instance;
+// client.authentications["api-key"].apiKey = process.env.SMTP_KEY;
+
+// const tranEmailApi = new SibApiV3Sdk.TransactionalEmailsApi();
+
 
 //----------------------------------EJS view engine----------------------------------
 app.set("views");
@@ -166,10 +177,24 @@ app.post("/booking",async (req, res) => {
       </div>
     `;
 
-    await transporter.sendMail({
-      from: `"Travel Booking" <YOUR_EMAIL@gmail.com>`,
+    // await transporter.sendMail({
+    //   from: `"Travel Booking" <YOUR_EMAIL@gmail.com>`,
+    //   to: email,
+    //   subject: "Your Travel Booking Confirmation",
+    //   html: htmlTemplate
+    // });
+
+    // await tranEmailApi.sendTransacEmail({
+    //   sender: { email: "vishal.j.khim@gmail.com", name: "Test" },
+    //   to: [{ email: "vishal.j.khim@gmail.com" }],
+    //   subject: "Test Mail",
+    //   htmlContent: "<h1>Hello from Render</h1>"
+    // });
+
+    await sgMail.send({
       to: email,
-      subject: "Your Travel Booking Confirmation",
+      from: "vishal.j.khim@gmail.com", // same as verified
+      subject: "Traveller",
       html: htmlTemplate
     });
 
@@ -177,7 +202,7 @@ app.post("/booking",async (req, res) => {
 
   } 
   catch (error) {
-    console.error(error);
+    console.error(error.response.body || error);
     res.status(500).json({ message: "Email sending failed" });
   }
 }
